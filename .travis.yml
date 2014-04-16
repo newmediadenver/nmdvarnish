@@ -11,9 +11,8 @@ branches:
 notifications:
   hipchat:
     rooms:
-  secure: GHKRmtneC3k82whzZUKf7w3XLl3ClEw6M2JgpmvQx8J3Yn9yxbSDYTHvVtgYbEeHnbWYv+lwDsAg/wzJOXpiBwAspF3iUkMTNw04dA2kKtiUGxJ47Q7RnNtXriuIysOi4+R79Re8gYw0Am6Szeq6S2sRx9Nh7sV0edaCxoxKosA=
+      secure: QsesaOcrU47zrPhnY9hJr50fV77aHpK39focmb4Gl3WRwelcF8WE/NWxLlqDN5W3mFit+g2dYbXIySmv58TRqCxUxYPCjp1O01u7HdyieBnmsOHJzUzDNRIZlhLH0mM18ofN7a+uQh9AsI16yfD+1fjfn7y53IEyItAVm0JVzjg=
 install: script/cached-bundle install --without integration --deployment
 env:
   global:
-  secure: Bh+LIXecYag7CAjtu+ZImzw0cAhFCPzg4WCtsysjmqynhLe2KZLXPWWdQykUl3gEsgRQfZ6kIl7q7q/YtvXu26wyV1Vsccv/+yjjFtcTZ4TQp0hwmZJztO184Iqnket7LOKu3mRzEdV1W3QnOG7jBFXNF9VbtOHPk7ZKe8bB/MU=
-
+    secure: lcPcE+0cmTYjfI+Z/SYm3cfXsN2CsbWGPfrYYYy02FXcOCGaLyscWXf10GCN3iBUzfDreVP6fl77k0S0Rw7055gLrIE12sIywoIsJHkxi/LQEmepXVZz0dipHZyM1Zbv3XimWUNZ1qTc8JVg48iyyR3TqTgQY64Uqz0rW/Kj1F0=
