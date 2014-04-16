@@ -1,53 +1,37 @@
 [![Build Status](https://travis-ci.org/newmediadenver/nmdbase.svg?branch=master)](https://travis-ci.org/newmediadenver/nmdbase) [![Coverage Status](https://coveralls.io/repos/newmediadenver/nmdbase/badge.png?branch=master)](https://coveralls.io/r/newmediadenver/nmdbase?branch=master) [![Dependency Status](https://gemnasium.com/newmediadenver/nmdbase.svg)](https://gemnasium.com/newmediadenver/nmdbase)
 
-NewMedia! Denver's nmdvarnish cookbook
+<%= metadata.maintainer %>'s <%= metadata.name %> cookbook
 =============================
 
-nmdvarnish (1.0.0) Manages varnish.
+<%= metadata.name %> (<%= metadata.version %>) <%= metadata.description %>
 
-@TODO
+<%= metadata.long_description %>
 
 Requirements
 ------------
 
 ### Platforms
-
-`ubuntu = 12.04`
-
+<% metadata.platforms.each do |os, version| %>
+`<%= os %> <%= version %>`
+<% end %>
 ### Dependencies
-
+<% metadata.dependencies.each do |os, version| %>
+`<%= os %> <%= version %>`
+<% end %>
 
 Attributes
 ----------
 
-### nmdvarnish::default
-    
-    # Varnish configuration file path.
-    default['nmdbase']['varnish']['path'] = '/etc/default/varnish'
-    
-    # Set varnish configuration options to enable a default install.
-    default['varnish']['start'] = 'yes'
-    default['varnish']['nfiles'] = '131072'
-    default['varnish']['memlock'] = '82000'
-    default['varnish']['instance'] = '$(uname -n)'
-
+<%= attributes %>
 Recipes
 -------
 
-
+<%= recipes %>
 
 Testing and Utility
 -------
 
-    rake foodcritic                   # Lint Chef cookbooks
-    rake integration                  # Alias for kitchen:all
-    rake kitchen:all                  # Run all test instances
-    rake kitchen:default-ubuntu-1204  # Run default-ubuntu-1204 test instance
-    rake readme                       # Generate the Readme.md file
-    rake rubocop                      # Run RuboCop style and lint checks
-    rake spec                         # Run ChefSpec examples
-    rake test                         # Run all tests
-
+<%= rake_tasks %>
 
 License and Author
 ------------------
