@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/newmediadenver/nmdvarnish.svg?branch=master)](https://travis-ci.org/newmediadenver/nmdvarnish) [![Coverage Status](https://coveralls.io/repos/newmediadenver/nmdvarnish/badge.png?branch=master)](https://coveralls.io/r/newmediadenver/nmdvarnish?branch=master) [![Dependency Status](https://gemnasium.com/newmediadenver/nmdvarnish.svg)](https://gemnasium.com/newmediadenver/nmdvarnish)
 
-NewMedia! Denver's nmdvarnish cookbook
+NewMedia! Denver's nmdvarnish cookbook bump
 =============================
 
 nmdvarnish (1.0.0) Manages varnish.
