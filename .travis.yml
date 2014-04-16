@@ -1,0 +1,19 @@
+language: ruby
+rvm:
+- 1.9.3
+- 2.0.0
+- 2.1.1
+before_install: 'echo ''gem: --no-ri --no-rdoc'' > ~/.gemrc'
+script: bundle exec rake test
+branches:
+  only:
+  - master
+notifications:
+  hipchat:
+    rooms:
+  secure: GHKRmtneC3k82whzZUKf7w3XLl3ClEw6M2JgpmvQx8J3Yn9yxbSDYTHvVtgYbEeHnbWYv+lwDsAg/wzJOXpiBwAspF3iUkMTNw04dA2kKtiUGxJ47Q7RnNtXriuIysOi4+R79Re8gYw0Am6Szeq6S2sRx9Nh7sV0edaCxoxKosA=
+install: script/cached-bundle install --without integration --deployment
+env:
+  global:
+  secure: Bh+LIXecYag7CAjtu+ZImzw0cAhFCPzg4WCtsysjmqynhLe2KZLXPWWdQykUl3gEsgRQfZ6kIl7q7q/YtvXu26wyV1Vsccv/+yjjFtcTZ4TQp0hwmZJztO184Iqnket7LOKu3mRzEdV1W3QnOG7jBFXNF9VbtOHPk7ZKe8bB/MU=
+
