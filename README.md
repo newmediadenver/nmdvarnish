@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/newmediadenver/nmdbase.svg?branch=master)](https://travis-ci.org/newmediadenver/nmdbase) [![Coverage Status](https://coveralls.io/repos/newmediadenver/nmdbase/badge.png?branch=master)](https://coveralls.io/r/newmediadenver/nmdbase?branch=master) [![Dependency Status](https://gemnasium.com/newmediadenver/nmdbase.svg)](https://gemnasium.com/newmediadenver/nmdbase)
+[![Build Status](https://travis-ci.org/newmediadenver/nmdvarnish.svg?branch=master)](https://travis-ci.org/newmediadenver/nmdvarnish) [![Coverage Status](https://coveralls.io/repos/newmediadenver/nmdvarnish/badge.png?branch=master)](https://coveralls.io/r/newmediadenver/nmdvarnish?branch=master) [![Dependency Status](https://gemnasium.com/newmediadenver/nmdvarnish.svg)](https://gemnasium.com/newmediadenver/nmdvarnish)
 
 NewMedia! Denver's nmdvarnish cookbook
 =============================
@@ -21,10 +21,10 @@ Attributes
 ----------
 
 ### nmdvarnish::default
-    
+
     # Varnish configuration file path.
     default['nmdbase']['varnish']['path'] = '/etc/default/varnish'
-    
+
     # Set varnish configuration options to enable a default install.
     default['varnish']['start'] = 'yes'
     default['varnish']['nfiles'] = '131072'
