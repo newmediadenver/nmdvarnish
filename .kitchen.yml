@@ -1,0 +1,18 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_solo
+
+platforms:
+  - name: ubuntu-12.04
+    driver_config:
+      box: ubuntu-12.04
+      # box_url: https://nmd-virtualbox.s3-us-west-2.amazonaws.com/nmd-ubunutu-12.04-i386-base-latest.box
+      box_url: https://nmd-vmware.s3-us-west-2.amazonaws.com/nmd-ubunutu-12.04-i386-base-latest.box
+suites:
+  - name: default
+    run_list:
+      - recipe[nmdvarnish::default]
+    attributes:
