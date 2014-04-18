@@ -5,12 +5,12 @@ maintainer_email 'support@newmediadenver.com'
 license 'Apache 2.0'
 
 version '1.0.0'
-supports 'ubuntu', '= 12.04'
+supports 'CentOS', '= 5.10'
 
 desc = 'Manages varnish.'
 description desc
 
-desc = '@TODO'
+desc = 'This is a basic cookbook to setup varnish.'
 
 long_description desc
 

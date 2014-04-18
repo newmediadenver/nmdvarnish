@@ -32,31 +32,28 @@ describe 'nmdvarnish::default' do
     expect(chef_run).to render_file('/etc/sysconfig/varnish')
       .with_content(/^INSTANCE=/)
 
-   # expect(chef_run).to render_file('/etc/sysconfig/varnish')
-   #  .with_content(/^DAEMON_OPTS=/)
+    expect(chef_run).to render_file('/etc/sysconfig/varnish')
+      .with_content(/^DAEMON_OPTS="-a localhost:6081 \\/)
 
     expect(chef_run).to render_file('/etc/sysconfig/varnish')
-      .with_content(/^DAEMON_OPTS="-a localhost:6081 \\$/)
+      .with_content(/^ +-T localhost:6082 \\/)
 
     expect(chef_run).to render_file('/etc/sysconfig/varnish')
-      .with_content(/^             -T localhost:6082 \\$/)
+      .with_content(%r{^ +-f /etc/varnish/default.vcl \\})
 
     expect(chef_run).to render_file('/etc/sysconfig/varnish')
-      .with_content(/^             -f \/etc\/varnish\/default.vcl \\/)
+      .with_content(/^ +-t 120 \\/)
 
     expect(chef_run).to render_file('/etc/sysconfig/varnish')
-      .with_content(/^             -t 120 \\/)
+      .with_content(/^ +-w 50,1000,120 \\/)
 
     expect(chef_run).to render_file('/etc/sysconfig/varnish')
-      .with_content(/^             -w 50,1000,120 \\/)
+      .with_content(%r{^ +-S /etc/varnish/secret \\})
 
     expect(chef_run).to render_file('/etc/sysconfig/varnish')
-      .with_content(/^             -S \/etc\/varnish\/secret \\/)
-
-    expect(chef_run).to render_file('/etc/sysconfig/varnish')
-      .with_content(/^             -s malloc,256m"/)
+      .with_content(/^ +-s malloc,256m"/)
   end
-  it 'Configure VCL.' do
+  it 'Configures the VCL file.' do
     expect(chef_run).to create_template('/etc/varnish/default.vcl').with(
       user: 'root',
       group: 'root',
@@ -75,10 +72,10 @@ describe 'nmdvarnish::default' do
       .with_content(/^backend default {/)
 
     expect(chef_run).to render_file('/etc/varnish/default.vcl')
-      .with_content(/^  .host = "127.0.0.1";/)
+      .with_content(/^ +.host = "127.0.0.1";/)
 
     expect(chef_run).to render_file('/etc/varnish/default.vcl')
-      .with_content(/^  .port = "80";/)
+      .with_content(/^ +.port = "80";/)
 
   end
 end

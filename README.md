@@ -6,14 +6,14 @@ NewMedia! Denver's nmdvarnish cookbook bump
 
 nmdvarnish (1.0.0) Manages varnish.
 
-@TODO
+This is a basic cookbook to setup varnish.
 
 Requirements
 ------------
 
 ### Platforms
 
-`ubuntu = 12.04`
+`CentOS = 5.10`
 
 ### Dependencies
 
@@ -24,17 +24,42 @@ Attributes
 ### nmdvarnish::default
 
     # Varnish configuration file path.
-    default['nmdbase']['varnish']['path'] = '/etc/default/varnish'
+    default['nmdvarnish']['varnishconf']['path'] = '/etc/sysconfig/varnish'
 
     # Set varnish configuration options to enable a default install.
-    default['varnish']['start'] = 'yes'
-    default['varnish']['nfiles'] = '131072'
-    default['varnish']['memlock'] = '82000'
-    default['varnish']['instance'] = '$(uname -n)'
+    default['nmdvarnish']['start'] = 'yes'
+    default['nmdvarnish']['nfiles'] = '131072'
+    default['nmdvarnish']['memlock'] = '82000'
+    default['nmdvarnish']['instance'] = '$(uname -n)'
+    default['nmdvarnish']['listen.address'] = 'localhost'
+    default['nmdvarnish']['listen.port'] = '6081'
+    default['nmdvarnish']['management.hostname'] = 'localhost'
+    default['nmdvarnish']['management.port'] = '6082'
+    default['nmdvarnish']['vcl.file'] = '/etc/varnish/default.vcl'
+    default['nmdvarnish']['default.ttl'] =  '120'
+    default['nmdvarnish']['threads.min'] =  '50'
+    default['nmdvarnish']['threads.max'] =  '1000'
+    default['nmdvarnish']['threads.timeout'] =  '120'
+    default['nmdvarnish']['secretfile'] = '/etc/varnish/secret'
+    default['nmdvarnish']['storage.type'] = 'malloc'
+    default['nmdvarnish']['storage.options'] = '256m'
+
+    # Specify the path to the varnish VCL file.
+
+    default['nmdvarnish']['vclfile'] = '/etc/varnish/default.vcl'
+
+    # Varnish VCL configuration options.
+
+    default['nmdvarnish']['backend.host'] = '127.0.0.1'
+    default['nmdvarnish']['backend.port'] = '80'
 
 Recipes
 -------
 
+### nmdvarnish::default
+    Installs the varnish package.
+    Configures varnish.
+    Configures the VCL file.
 
 
 Testing and Utility
@@ -53,7 +78,7 @@ Testing and Utility
 License and Author
 ------------------
 
-Author:: Kevin Bridges
+Author:: David Arnold
 
 Copyright:: 2014, NewMedia Denver
 

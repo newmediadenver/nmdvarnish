@@ -41,7 +41,7 @@ default['nmdvarnish']['secretfile'] = '/etc/varnish/secret'
 default['nmdvarnish']['storage.type'] = 'malloc'
 default['nmdvarnish']['storage.options'] = '256m'
 
-# Varnish VCL file path.
+# Specify the path to the varnish VCL file.
 
 default['nmdvarnish']['vclfile'] = '/etc/varnish/default.vcl'
 
