@@ -40,3 +40,12 @@ default['nmdvarnish']['threads.timeout'] =  '120'
 default['nmdvarnish']['secretfile'] = '/etc/varnish/secret'
 default['nmdvarnish']['storage.type'] = 'malloc'
 default['nmdvarnish']['storage.options'] = '256m'
+
+# Varnish VCL file path.
+
+default['nmdvarnish']['vclfile'] = '/etc/varnish/default.vcl'
+
+# Varnish VCL configuration options.
+
+default['nmdvarnish']['backend.host'] = '127.0.0.1'
+default['nmdvarnish']['backend.port'] = '80'

@@ -29,3 +29,10 @@ template node['nmdvarnish']['varnishconf']['path'] do
   owner 'root'
   group 'root'
 end
+
+template node['nmdvarnish']['vclfile'] do
+  source 'vclfile.erb'
+  mode 0644
+  owner 'root'
+  group 'root'
+end
