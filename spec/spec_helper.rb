@@ -17,10 +17,10 @@ RSpec.configure do |config|
   # config.path = 'ohai.json'
 
   # Specify the operating platform to mock Ohai data from
-  config.platform = 'Ubuntu'
+  config.platform = 'CentOS'
 
   # Specify the operating version to mock Ohai data from
-  config.version = '12.04'
+  config.version = '5.10'
 
   # Use color output for RSpec
   config.color_enabled = true
