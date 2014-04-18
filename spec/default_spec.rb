@@ -32,8 +32,8 @@ describe 'nmdvarnish::default' do
     expect(chef_run).to render_file('/etc/sysconfig/varnish')
       .with_content(/^INSTANCE=/)
 
-    expect(chef_run).to render_file('/etc/sysconfig/varnish')
-      .with_content(/^DAEMON_OPTS=/)
+   # expect(chef_run).to render_file('/etc/sysconfig/varnish')
+   #  .with_content(/^DAEMON_OPTS=/)
 
     expect(chef_run).to render_file('/etc/sysconfig/varnish')
       .with_content(/^DAEMON_OPTS="-a localhost:6081 \\$/)
@@ -78,6 +78,7 @@ describe 'nmdvarnish::default' do
       .with_content(/^  .host = "127.0.0.1";/)
 
     expect(chef_run).to render_file('/etc/varnish/default.vcl')
-      .with_content(/^  .port = "88";/)
+      .with_content(/^  .port = "80";/)
+
   end
 end
