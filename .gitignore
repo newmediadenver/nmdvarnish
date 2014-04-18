@@ -20,4 +20,7 @@
 # Macs
 .DS_Store
 
+#coveralls
 /coverage
+/coverage/.last_run.json
+/coverage/.resultset.json

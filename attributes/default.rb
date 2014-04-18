@@ -21,10 +21,22 @@
 ### nmdvarnish::default
 
 # Varnish configuration file path.
-default['nmdvarnish']['varnishconf']['path'] = '/etc/default/varnish'
+default['nmdvarnish']['varnishconf']['path'] = '/etc/sysconfig/varnish'
 
 # Set varnish configuration options to enable a default install.
 default['nmdvarnish']['start'] = 'yes'
 default['nmdvarnish']['nfiles'] = '131072'
 default['nmdvarnish']['memlock'] = '82000'
 default['nmdvarnish']['instance'] = '$(uname -n)'
+default['nmdvarnish']['listen.address'] = 'localhost'
+default['nmdvarnish']['listen.port'] = '6081'
+default['nmdvarnish']['management.hostname'] = 'localhost'
+default['nmdvarnish']['management.port'] = '6082'
+default['nmdvarnish']['vcl.file'] = '/etc/varnish/default.vcl'
+default['nmdvarnish']['default.ttl'] =  '120'
+default['nmdvarnish']['threads.min'] =  '50'
+default['nmdvarnish']['threads.max'] =  '1000'
+default['nmdvarnish']['threads.timeout'] =  '120'
+default['nmdvarnish']['secretfile'] = '/etc/varnish/secret'
+default['nmdvarnish']['storage.type'] = 'malloc'
+default['nmdvarnish']['storage.options'] = '256m'
