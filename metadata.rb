@@ -5,7 +5,7 @@ maintainer_email 'support@newmediadenver.com'
 license 'Apache 2.0'
 
 version '1.0.0'
-supports 'CentOS', '= 5.10'
+supports 'centos', '= 5.10'
 
 desc = 'Manages varnish.'
 description desc
