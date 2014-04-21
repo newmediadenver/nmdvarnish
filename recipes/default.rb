@@ -35,6 +35,6 @@ template node[:nmdvarnish][:vclfile] do
   mode 0644
   owner 'root'
   group 'root'
-  variables(whitelistacl: node[:nmdvarnish]['acl1.addresses'])
+  variables(whitelistacl: node[:nmdvarnish][:acl1_addresses])
 
 end

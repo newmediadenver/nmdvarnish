@@ -20,10 +20,10 @@ MEMLOCK=<%= node[:nmdvarnish][:memlock] %>
 INSTANCE=<%= node[:nmdvarnish][:instance] %>
 
 
-DAEMON_OPTS="-a <%= node[:nmdvarnish]['listen.address'] %>:<%= node[:nmdvarnish]['listen.port'] %> \
-             -T <%= node[:nmdvarnish]['management.hostname'] %>:<%= node[:nmdvarnish]['management.port'] %> \
-             -f <%= node[:nmdvarnish]['vcl.file'] %> \
-             -t <%= node[:nmdvarnish]['default.ttl'] %> \
-             -w <%= node[:nmdvarnish]['threads.min'] %>,<%= node[:nmdvarnish]['threads.max'] %>,<%= node[:nmdvarnish]['threads.timeout'] %> \
+DAEMON_OPTS="-a <%= node[:nmdvarnish][:listen_address] %>:<%= node[:nmdvarnish][:listen_port] %> \
+             -T <%= node[:nmdvarnish][:management_hostname] %>:<%= node[:nmdvarnish][:management_port] %> \
+             -f <%= node[:nmdvarnish][:vcl_file] %> \
+             -t <%= node[:nmdvarnish][:default_ttl] %> \
+             -w <%= node[:nmdvarnish][:threads_min] %>,<%= node[:nmdvarnish][:threads_max] %>,<%= node[:nmdvarnish][:threads_timeout] %> \
              -S <%= node[:nmdvarnish][:secretfile] %> \
-             -s <%= node[:nmdvarnish]['storage.type'] %>,<%= node[:nmdvarnish]['storage.options'] %>"
+             -s <%= node[:nmdvarnish][:storage_type] %>,<%= node[:nmdvarnish][:storage_options] %>"

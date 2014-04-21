@@ -84,7 +84,7 @@ describe 'nmdvarnish::default' do
       .with_content(/^ +."127.0.0.1"\/32;/)
 
     expect(chef_run).to render_file('/etc/varnish/default.vcl')
-      .with_content(/^ +."127.1.1.1"\/32;/)
+      .with_content(/^ +."127.0.1.1"\/32;/)
 
   end
 end

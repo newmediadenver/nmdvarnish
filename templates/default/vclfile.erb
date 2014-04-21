@@ -2,11 +2,11 @@
 # Do NOT modify this file by hand!
 
 backend default {
-  .host = "<%= node[:nmdvarnish]['backend.host'] %>";
-  .port = "<%= node[:nmdvarnish]['backend.port'] %>";
+  .host = "<%= node[:nmdvarnish][:backend_host] %>";
+  .port = "<%= node[:nmdvarnish][:backend_port] %>";
 }
 
-acl <%= node[:nmdvarnish]['acl1.name'] %> {
+acl <%= node[:nmdvarnish][:acl1_name] %> {
 <% @whitelistacl.each do |ip| %>
         <%= ip %>;
 <% end %>
