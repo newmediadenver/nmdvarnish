@@ -23,16 +23,18 @@
     action :install
   end
 end
-template node['nmdvarnish']['varnishconf']['path'] do
+template node[:nmdvarnish][:varnishconf][:path] do
   source 'varnish.erb'
   mode 0644
   owner 'root'
   group 'root'
 end
 
-template node['nmdvarnish']['vclfile'] do
+template node[:nmdvarnish][:vclfile] do
   source 'vclfile.erb'
   mode 0644
   owner 'root'
   group 'root'
+  variables(whitelistacl: node[:nmdvarnish]['acl1.addresses'])
+
 end

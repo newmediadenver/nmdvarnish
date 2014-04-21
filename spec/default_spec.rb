@@ -77,5 +77,14 @@ describe 'nmdvarnish::default' do
     expect(chef_run).to render_file('/etc/varnish/default.vcl')
       .with_content(/^ +.port = "80";/)
 
+    expect(chef_run).to render_file('/etc/varnish/default.vcl')
+      .with_content(/^acl default {/)
+
+    expect(chef_run).to render_file('/etc/varnish/default.vcl')
+      .with_content(/^ +."127.0.0.1"\/32;/)
+
+    expect(chef_run).to render_file('/etc/varnish/default.vcl')
+      .with_content(/^ +."127.1.1.1"\/32;/)
+
   end
 end
