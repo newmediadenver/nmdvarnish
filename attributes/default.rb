@@ -49,5 +49,3 @@ default[:nmdvarnish][:vclfile] = '/etc/varnish/default.vcl'
 
 default[:nmdvarnish][:backend_host] = '127.0.0.1'
 default[:nmdvarnish][:backend_port] = '80'
-default[:nmdvarnish][:acl1_name] = 'default'
-default[:nmdvarnish][:acl1_addresses] = ['"127.0.0.1"/32', '"127.0.1.1"/32']

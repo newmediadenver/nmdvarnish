@@ -6,11 +6,13 @@ backend default {
   .port = "<%= node[:nmdvarnish][:backend_port] %>";
 }
 
-acl <%= node[:nmdvarnish][:acl1_name] %> {
-<% @whitelistacl.each do |ip| %>
-        <%= ip %>;
+<% @sites.each do |site_name, site| %>
+
+acl <%= site_name %> {
+        <%= site[:acladdresses].join(';' + "\n        ") %>;
+       }
+
 <% end %>
-}
 
 sub vcl_recv {
 

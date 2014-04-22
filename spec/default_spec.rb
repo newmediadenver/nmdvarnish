@@ -1,9 +1,18 @@
 # encoding: utf-8
-require 'chefspec'
 require 'spec_helper'
 
 describe 'nmdvarnish::default' do
-  let(:chef_run) { ChefSpec::Runner.new.converge(described_recipe) }
+#  let(:chef_run) { ChefSpec::Runner.new.converge(described_recipe) }
+  let(:chef_run) do
+    ChefSpec::Runner.new do |node|
+      node.set['nmdvarnish'] = {
+        'sites' => {
+          'default' => {  'acladdresses' => ['"127.0.0.1"/32', '"127.1.1.1"/32']  },
+          'example2' => {  'acladdresses' => ['"127.0.1.1"/32']  }
+        }
+      }
+    end.converge(described_recipe)
+  end
 
   it 'Installs the varnish package.' do
     expect(chef_run).to install_package('varnish')
