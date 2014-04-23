@@ -18,7 +18,7 @@ describe 'nmdvarnish::default' do
             },
             'example2' => {
                 'acladdresses' => [
-                    '127.0.1.1/32'
+                    '"127.0.1.1"/32'
                 ]
             }
         }
