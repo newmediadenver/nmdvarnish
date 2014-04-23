@@ -22,6 +22,7 @@
 
 # Varnish configuration file path.
 default[:nmdvarnish][:varnishconf][:path] = '/etc/sysconfig/varnish'
+##normal[:nmdvarnish][:version] = "3.0.5"
 
 # Set varnish configuration options to enable a default install.
 default[:nmdvarnish][:start] = 'yes'

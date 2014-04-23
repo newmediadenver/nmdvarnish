@@ -20,6 +20,7 @@
 #
 %w(varnish).each do |pkg|
   package pkg do
+  #  version node[:nmdvarnish][:version]
     action :install
   end
 end
