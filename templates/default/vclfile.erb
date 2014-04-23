@@ -2,14 +2,14 @@
 # Do NOT modify this file by hand!
 
 backend default {
-  .host = "<%= node[:nmdvarnish][:backend_host] %>";
+  .host = "<%= @vcl_config_data['backend_host'] %>";
   .port = "<%= node[:nmdvarnish][:backend_port] %>";
 }
 
-<% @sites.each do |site_name, site| %>
+<% @vcl_config_data['sites'].each do |site_name, site| %>
 
 acl <%= site_name %> {
-        <%= site[:acladdresses].join(';' + "\n        ") %>;
+        <%= site['acladdresses'].join(';' + "\n        ") %>;
        }
 
 <% end %>

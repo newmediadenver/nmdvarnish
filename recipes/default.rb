@@ -18,24 +18,5 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-%w(varnish).each do |pkg|
-  package pkg do
-  #  version node[:nmdvarnish][:version]
-    action :install
-  end
-end
-template node[:nmdvarnish][:varnishconf][:path] do
-  source 'varnish.erb'
-  mode 0644
-  owner 'root'
-  group 'root'
-end
-
-template node[:nmdvarnish][:vclfile] do
-  source 'vclfile.erb'
-  mode 0644
-  owner 'root'
-  group 'root'
-  variables(sites: node[:nmdvarnish][:sites])
-
-end
+include_recipe 'nmdvarnish::install'
+include_recipe 'nmdvarnish::configure'

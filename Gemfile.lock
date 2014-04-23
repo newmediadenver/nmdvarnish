@@ -261,6 +261,7 @@ GEM
     typhoeus (0.6.8)
       ethon (>= 0.7.0)
     uuidtools (2.1.4)
+    vagrant-wrapper (1.2.1.1)
     varia_model (0.3.2)
       buff-extensions (~> 0.2)
       hashie (>= 2.0.2)
@@ -293,4 +294,5 @@ DEPENDENCIES
   rubocop
   test-kitchen (~> 1.0)
   travis
+  vagrant-wrapper
   websocket-native

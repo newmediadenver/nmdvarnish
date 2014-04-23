@@ -2,15 +2,41 @@
 require 'spec_helper'
 
 describe 'nmdvarnish::default' do
-#  let(:chef_run) { ChefSpec::Runner.new.converge(described_recipe) }
   let(:chef_run) do
+   # before do
+      stub_data_bag_item('nmdvarnish', 'configure').and_return(
+              {
+    'id' => 'configure',
+    '_default' => {
+        'backend_host' => '127.0.0.1',
+        'sites' => {
+            'default' => {
+                'acladdresses' => [
+                    '"127.0.0.1"/32',
+                    '"127.0.1.1"/32'
+                ]
+            },
+            'example2' => {
+                'acladdresses' => [
+                    '127.0.1.1/32'
+                ]
+            }
+        }
+      }
+    }
+  )
+    #end
     ChefSpec::Runner.new do |node|
       node.set['nmdvarnish'] = {
         'sites' => {
-          'default' => {  'acladdresses' => ['"127.0.0.1"/32', '"127.1.1.1"/32']  },
-          'example2' => {  'acladdresses' => ['"127.0.1.1"/32']  }
-        }
-      }
+          'default' => {
+            'acladdresses' => ['"127.0.0.1"/32', '"127.1.1.1"/32']
+                       },
+          'example2' => {
+            'acladdresses' => ['"127.0.1.1"/32']
+                        }
+     }
+    }
     end.converge(described_recipe)
   end
 
