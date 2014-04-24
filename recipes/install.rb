@@ -19,16 +19,21 @@
 # limitations under the License.
 #
 
-if platform?("redhat", "centos", "fedora")
+if platform?('redhat', 'centos', 'fedora')
+  os_major_ver = node[:platform_version].split('.')
   execute 'add-varnish3-rpm' do
-    command '/bin/rpm --nosignature -i http://repo.varnish-cache.org/redhat/varnish-3.0/el5/noarch/varnish-release/varnish-release-3.0-1.el5.centos.noarch.rpm'
+    if os_major_ver == '5'
+      command '/bin/rpm --nosignature -i http://repo.varnish-cache.org/redhat/varnish-3.0/el5/noarch/varnish-release/varnish-release-3.0-1.el5.centos.noarch.rpm'
+    elsif os_major_ver == '6'
+      command 'rpm --nosignature -i http://repo.varnish-cache.org/redhat/varnish-3.0/el6/noarch/varnish-release/varnish-release-3.0-1.el6.noarch.rpm'
+
+    end
+
   end
 end
 
-
- %w(varnish).each do |pkg|
-   package pkg do
-   #  version node[:nmdvarnish][:version]
-     action :install
-   end
- end
+%w(varnish).each do |pkg|
+  package pkg do
+    action :install
+  end
+end
