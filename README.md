@@ -13,7 +13,7 @@ Requirements
 
 ### Platforms
 
-`CentOS = 5.10`
+`centos = 5.10`
 
 ### Dependencies
 
@@ -22,36 +22,40 @@ Attributes
 ----------
 
 ### nmdvarnish::default
-
+    
+### nmdvarnish::varnish_install
+    
     # Varnish configuration file path.
-    default['nmdvarnish']['varnishconf']['path'] = '/etc/sysconfig/varnish'
-
-    # Set varnish configuration options to enable a default install.
-    default['nmdvarnish']['start'] = 'yes'
-    default['nmdvarnish']['nfiles'] = '131072'
-    default['nmdvarnish']['memlock'] = '82000'
-    default['nmdvarnish']['instance'] = '$(uname -n)'
-    default['nmdvarnish']['listen.address'] = 'localhost'
-    default['nmdvarnish']['listen.port'] = '6081'
-    default['nmdvarnish']['management.hostname'] = 'localhost'
-    default['nmdvarnish']['management.port'] = '6082'
-    default['nmdvarnish']['vcl.file'] = '/etc/varnish/default.vcl'
-    default['nmdvarnish']['default.ttl'] =  '120'
-    default['nmdvarnish']['threads.min'] =  '50'
-    default['nmdvarnish']['threads.max'] =  '1000'
-    default['nmdvarnish']['threads.timeout'] =  '120'
-    default['nmdvarnish']['secretfile'] = '/etc/varnish/secret'
-    default['nmdvarnish']['storage.type'] = 'malloc'
-    default['nmdvarnish']['storage.options'] = '256m'
-
+    default[:nmdvarnish][:varnishconf][:path] = '/etc/sysconfig/varnish'
+    ## normal[:nmdvarnish][:version] = "3.0.5"
+    
     # Specify the path to the varnish VCL file.
-
-    default['nmdvarnish']['vclfile'] = '/etc/varnish/default.vcl'
-
+    default[:nmdvarnish][:vclfile] = '/etc/varnish/default.vcl'
+    
+    # Set varnish configuration options to enable a default install.
+    default[:nmdvarnish][:start] = 'yes'
+    default[:nmdvarnish][:nfiles] = '131072'
+    default[:nmdvarnish][:memlock] = '82000'
+    default[:nmdvarnish][:instance] = '$(uname -n)'
+    default[:nmdvarnish][:listen_address] = ''
+    default[:nmdvarnish][:listen_port] = '6081'
+    default[:nmdvarnish][:management_hostname] = 'localhost'
+    default[:nmdvarnish][:management_port] = '6082'
+    default[:nmdvarnish][:vcl_file] = '/etc/varnish/default.vcl'
+    default[:nmdvarnish][:default_ttl] =  '120'
+    default[:nmdvarnish][:threads_min] =  '50'
+    default[:nmdvarnish][:threads_max] =  '1000'
+    default[:nmdvarnish][:threads_timeout] =  '120'
+    default[:nmdvarnish][:secretfile] = '/etc/varnish/secret'
+    default[:nmdvarnish][:storage_type] = 'malloc'
+    default[:nmdvarnish][:storage_options] = '256m'
+    
+### nmdvarnish::varnish_configure
+    
     # Varnish VCL configuration options.
-
-    default['nmdvarnish']['backend.host'] = '127.0.0.1'
-    default['nmdvarnish']['backend.port'] = '80'
+    
+    default[:nmdvarnish][:backend_host] = '127.0.0.1'
+    default[:nmdvarnish][:backend_port] = '80'
 
 Recipes
 -------
@@ -65,20 +69,20 @@ Recipes
 Testing and Utility
 -------
 
-    rake foodcritic                   # Lint Chef cookbooks
-    rake integration                  # Alias for kitchen:all
-    rake kitchen:all                  # Run all test instances
-    rake kitchen:default-ubuntu-1204  # Run default-ubuntu-1204 test instance
-    rake readme                       # Generate the Readme.md file
-    rake rubocop                      # Run RuboCop style and lint checks
-    rake spec                         # Run ChefSpec examples
-    rake test                         # Run all tests
+    rake foodcritic                  # Lint Chef cookbooks
+    rake integration                 # Alias for kitchen:all
+    rake kitchen:all                 # Run all test instances
+    rake kitchen:default-centos-510  # Run default-centos-510 test instance
+    rake readme                      # Generate the Readme.md file
+    rake rubocop                     # Run RuboCop style and lint checks
+    rake spec                        # Run ChefSpec examples
+    rake test                        # Run all tests
 
 
 License and Author
 ------------------
 
-Author:: David Arnold
+Author:: Kevin Bridges
 
 Copyright:: 2014, NewMedia Denver
 
