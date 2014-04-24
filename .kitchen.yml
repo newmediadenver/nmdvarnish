@@ -14,8 +14,8 @@ suites:
   - name: default
     run_list:
       - recipe[nmdvarnish::default]
-    data_bags_path: /home/davidxarnold/highwire/chef/data_bags
-    #data_bags_path: "<%= ENV['NMDVARNISH_DATA_BAGS_PATH'] %>"
+    #data_bags_path: /home/davidxarnold/highwire/chef/data_bags
+    data_bags_path: "<%= ENV['NMDVARNISH_DATA_BAGS_PATH'] %>"
     attributes: {
         'nmdvarnish': {
           'sites': {

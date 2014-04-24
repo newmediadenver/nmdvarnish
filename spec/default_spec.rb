@@ -68,7 +68,7 @@ describe 'nmdvarnish::default' do
       .with_content(/^INSTANCE=/)
 
     expect(chef_run).to render_file('/etc/sysconfig/varnish')
-      .with_content(/^DAEMON_OPTS="-a localhost:6081 \\/)
+      .with_content(/^DAEMON_OPTS="-a :6081 \\/)
 
     expect(chef_run).to render_file('/etc/sysconfig/varnish')
       .with_content(/^ +-T localhost:6082 \\/)

@@ -2,18 +2,26 @@
 # Do NOT modify this file by hand!
 
 backend default {
-  .host = "<%= @vcl_config_data['backend_host'] %>";
+  .host = "<%=
+  if @vcl_config_data['backend_host']
+     @vcl_config_data['backend_host'] + "\";"
+  else
+   node[:nmdvarnish][:backend_host] + "\";"
+  end
+  %>
   .port = "<%= node[:nmdvarnish][:backend_port] %>";
 }
 
-<% @vcl_config_data['sites'].each do |site_name, site| %>
+<%
+  if @vcl_config_data['sites'] -%>
+    <% @vcl_config_data['sites'].each do |site_name, site| %>
 
 acl <%= site_name %> {
-        <%= site['acladdresses'].join(';' + "\n        ") %>;
-       }
+            <%= site['acladdresses'].join(';' + "\n        ") %>;
+           }
 
+    <% end %>
 <% end %>
-
 sub vcl_recv {
 
 #forward users actual IP address
