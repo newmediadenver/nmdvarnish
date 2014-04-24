@@ -20,7 +20,7 @@
 #
 
 config_data = data_bag_item('nmdvarnish', 'configure')[node.chef_environment]
-Chef::Log.debug("nmdvarnish_data = #{nmdvarnish_data.inspect}")
+Chef::Log.debug("config_data = #{config_data.inspect}")
 
 template node[:nmdvarnish][:varnishconf][:path] do
   source 'varnish.erb'
@@ -29,7 +29,7 @@ template node[:nmdvarnish][:varnishconf][:path] do
   group 'root'
 end
 
-Chef::Log.debug("nmdvarnish_data = #{nmdvarnish_data.inspect}")
+Chef::Log.debug("config_data = #{config_data.inspect}")
 
 template node[:nmdvarnish][:vclfile] do
   source 'vclfile.erb'
