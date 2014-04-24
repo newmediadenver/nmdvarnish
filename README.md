@@ -22,16 +22,16 @@ Attributes
 ----------
 
 ### nmdvarnish::default
-    
+
 ### nmdvarnish::varnish_install
-    
+
     # Varnish configuration file path.
     default[:nmdvarnish][:varnishconf][:path] = '/etc/sysconfig/varnish'
     ## normal[:nmdvarnish][:version] = "3.0.5"
-    
+
     # Specify the path to the varnish VCL file.
     default[:nmdvarnish][:vclfile] = '/etc/varnish/default.vcl'
-    
+
     # Set varnish configuration options to enable a default install.
     default[:nmdvarnish][:start] = 'yes'
     default[:nmdvarnish][:nfiles] = '131072'
@@ -49,11 +49,11 @@ Attributes
     default[:nmdvarnish][:secretfile] = '/etc/varnish/secret'
     default[:nmdvarnish][:storage_type] = 'malloc'
     default[:nmdvarnish][:storage_options] = '256m'
-    
+
 ### nmdvarnish::varnish_configure
-    
+
     # Varnish VCL configuration options.
-    
+
     default[:nmdvarnish][:backend_host] = '127.0.0.1'
     default[:nmdvarnish][:backend_port] = '80'
 
@@ -82,7 +82,7 @@ Testing and Utility
 License and Author
 ------------------
 
-Author:: Kevin Bridges
+Author:: David Arnold
 
 Copyright:: 2014, NewMedia Denver
 

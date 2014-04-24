@@ -23,10 +23,13 @@ if platform?('redhat', 'centos', 'fedora')
   os_major_ver = node[:platform_version].split('.')
   execute 'add-varnish3-rpm' do
     if os_major_ver[0] == '5'
+      # rubocop:disable LineLength, StringLiterals
       command '/bin/rpm --nosignature -i http://repo.varnish-cache.org/redhat/varnish-3.0/el5/noarch/varnish-release/varnish-release-3.0-1.el5.centos.noarch.rpm'
+      # rubocop:enable LineLength, StringLiterals
     elsif os_major_ver[0] == '6'
+      # rubocop:disable LineLength, StringLiterals
       command 'rpm --nosignature -i http://repo.varnish-cache.org/redhat/varnish-3.0/el6/noarch/varnish-release/varnish-release-3.0-1.el6.noarch.rpm'
-
+      # rubocop:enable LineLength, StringLiterals
     end
 
   end
