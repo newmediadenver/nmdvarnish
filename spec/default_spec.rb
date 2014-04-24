@@ -4,28 +4,26 @@ require 'spec_helper'
 describe 'nmdvarnish::default' do
   let(:chef_run) do
    # before do
-      stub_data_bag_item('nmdvarnish', 'configure').and_return(
-              {
+    stub_data_bag_item('nmdvarnish', 'configure').and_return(
     'id' => 'configure',
     '_default' => {
-        'backend_host' => '127.0.0.1',
-        'sites' => {
-            'default' => {
-                'acladdresses' => [
-                    '"127.0.0.1"/32',
-                    '"127.0.1.1"/32'
+      'backend_host' => '127.0.0.1',
+      'sites' => {
+        'default' => {
+          'acladdresses' => [
+            '"127.0.0.1"/32',
+            '"127.0.1.1"/32'
                 ]
             },
-            'example2' => {
-                'acladdresses' => [
-                    '"127.0.1.1"/32'
+        'example2' => {
+          'acladdresses' => [
+            '"127.0.1.1"/32'
                 ]
             }
         }
       }
-    }
   )
-    #end
+    # end
     ChefSpec::Runner.new do |node|
       node.set['nmdvarnish'] = {
         'sites' => {

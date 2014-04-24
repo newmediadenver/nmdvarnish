@@ -19,7 +19,7 @@
 # limitations under the License.
 #
 
-nmdvarnish_data = data_bag_item('nmdvarnish', 'configure')[node.chef_environment]
+config_data = data_bag_item('nmdvarnish', 'configure')[node.chef_environment]
 Chef::Log.debug("nmdvarnish_data = #{nmdvarnish_data.inspect}")
 
 template node[:nmdvarnish][:varnishconf][:path] do
@@ -36,6 +36,6 @@ template node[:nmdvarnish][:vclfile] do
   mode 0644
   owner 'root'
   group 'root'
-  variables(vcl_config_data: nmdvarnish_data)
+  variables(vcl_config_data: config_data)
 
 end
