@@ -22,3 +22,6 @@
 
 #coveralls
 /coverage/
+
+#travis
+/.travis.yml
