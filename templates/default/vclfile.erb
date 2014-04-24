@@ -17,7 +17,7 @@ backend default {
     <% @vcl_config_data['sites'].each do |site_name, site| %>
 
 acl <%= site_name %> {
-          <%= site['acladdresses'].join(';' + "\n        ") %>;
+        <%= site['acladdresses'].join(';' + "\n        ") %>;
            }
 
     <% end %>
