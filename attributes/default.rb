@@ -51,6 +51,6 @@ default[:nmdvarnish][:storage_options] = '256m'
 
 # Varnish VCL configuration options.
 
-default[:nmdvarnish][:backend_host] = ['127.0.0.1', 'bobsServer.place.ccc']
+default[:nmdvarnish][:backend_host] = '127.0.0.1'
 default[:nmdvarnish][:backend_port] = '80'
 default[:nmdvarnish][:enable_esi] = 'no'
