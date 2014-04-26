@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/newmediadenver/nmdvarnish.png?label=ready&title=Ready)](https://waffle.io/newmediadenver/nmdvarnish)
 [![Build Status](https://travis-ci.org/newmediadenver/nmdvarnish.svg?branch=master)](https://travis-ci.org/newmediadenver/nmdvarnish) [![Coverage Status](https://coveralls.io/repos/newmediadenver/nmdvarnish/badge.png?branch=master)](https://coveralls.io/r/newmediadenver/nmdvarnish?branch=master) [![Dependency Status](https://gemnasium.com/newmediadenver/nmdvarnish.svg)](https://gemnasium.com/newmediadenver/nmdvarnish)
 
 NewMedia! Denver's nmdvarnish cookbook bump
