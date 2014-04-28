@@ -2,11 +2,12 @@
 require 'spec_helper'
 
 describe 'nmdvarnish::default' do
-    let(:chef_run) { ChefSpec::Runner.new.converge(described_recipe) }
+  let(:chef_run) { ChefSpec::Runner.new.converge(described_recipe) }
 
   it 'Installs the varnish package.' do
     expect(chef_run).to install_package('varnish')
   end
+
   it 'Configures varnish.' do
     expect(chef_run).to create_template('/etc/sysconfig/varnish').with(
       user: 'root',
