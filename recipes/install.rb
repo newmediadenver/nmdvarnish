@@ -19,24 +19,26 @@
 # limitations under the License.
 #
 
-if platform?('redhat', 'centos', 'fedora')
-  os_major_ver = node[:platform_version].split('.')
-  execute 'add-varnish3-rpm' do
-    if os_major_ver[0] == '5'
+if platform_family?('rhel')
+
+  case node[:platform_version].split('.')
+  when '5'
+    execute 'add-varnish3-centos5-rpm' do
       # rubocop:disable LineLength, StringLiterals
       command '/bin/rpm --nosignature -i http://repo.varnish-cache.org/redhat/varnish-3.0/el5/noarch/varnish-release/varnish-release-3.0-1.el5.centos.noarch.rpm'
       # rubocop:enable LineLength, StringLiterals
-    elsif os_major_ver[0] == '6'
-      # rubocop:disable LineLength, StringLiterals
-      command 'rpm --nosignature -i http://repo.varnish-cache.org/redhat/varnish-3.0/el6/noarch/varnish-release/varnish-release-3.0-1.el6.noarch.rpm'
-      # rubocop:enable LineLength, StringLiterals
+      not_if { ::File.exist?('/usr/sbin/varnishd') }
     end
-
+  when '6'
+    execute 'add-varnish3-centos5-rpm' do
+      # rubocop:disable LineLength, StringLiterals
+      command '/bin/rpm --nosignature -i http://repo.varnish-cache.org/redhat/varnish-3.0/el5/noarch/varnish-release/varnish-release-3.0-1.el5.centos.noarch.rpm'
+      # rubocop:enable LineLength, StringLiterals
+      not_if { ::File.exist?('/usr/sbin/varnishd') }
+    end
   end
 end
 
-%w(varnish).each do |pkg|
-  package pkg do
-    action :install
-  end
+package 'varnish' do
+  action :install
 end

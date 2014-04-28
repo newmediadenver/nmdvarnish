@@ -29,49 +29,49 @@ acl <%= name %> {
 <% end %>
 }
 
-<% unless node[:nmdvarnish][:vcl_recv].blank?  -%>
+<% unless node[:nmdvarnish][:vcl_recv].nil?  -%>
 sub vcl_recv {
 <%= node[:nmdvarnish][:vcl_recv] %>
 }
 
 <% end %>
-<% unless node[:nmdvarnish][:vcl_fetch].blank?  -%>
+<% unless node[:nmdvarnish][:vcl_fetch].nil?  -%>
 sub vcl_fetch {
 <%= node[:nmdvarnish][:vcl_hash] %>
 }
 
 <% end %>
-<% unless node[:nmdvarnish][:vcl_hash].blank?  -%>
+<% unless node[:nmdvarnish][:vcl_hash].nil?  -%>
 sub vcl_hash {
 <%= node[:nmdvarnish][:vcl_hash] %>
 }
 
 <% end %>
-<% unless node[:nmdvarnish][:vcl_hit].blank?  -%>
+<% unless node[:nmdvarnish][:vcl_hit].nil?  -%>
 sub vcl_hit {
 <%= node[:nmdvarnish][:vcl_hit] %>
 }
 
 <% end %>
-<% unless node[:nmdvarnish][:vcl_miss].blank?  -%>
+<% unless node[:nmdvarnish][:vcl_miss].nil?  -%>
 sub vcl_miss {
 <%= node[:nmdvarnish][:vcl_miss] %>
 }
 
 <% end %>
-<% unless node[:nmdvarnish][:vcl_pass].blank?  -%>
+<% unless node[:nmdvarnish][:vcl_pass].nil?  -%>
 sub vcl_pass {
 <%= node[:nmdvarnish][:vcl_pass] %>
 }
 
 <% end %>
-<% unless node[:nmdvarnish][:vcl_deliver].blank?  -%>
+<% unless node[:nmdvarnish][:vcl_deliver].nil?  -%>
 sub vcl_deliver {
 <%= node[:nmdvarnish][:vcl_deliver] %>
 }
 
 <% end %>
-<% unless node[:nmdvarnish][:vcl_error].blank?  -%>
+<% unless node[:nmdvarnish][:vcl_error].nil?  -%>
 sub vcl_error {
 <%= node[:nmdvarnish][:vcl_error] %>
 }

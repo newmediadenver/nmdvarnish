@@ -90,11 +90,11 @@ default[:nmdvarnish][:acl] = {
     ['"127.0.0.3"/8;', '"127.0.0.4"/32;']
   }
 
-default[:nmdvarnish][:vcl_recv] = ''
-default[:nmdvarnish][:vcl_fetch] = ''
-default[:nmdvarnish][:vcl_hash] = ''
-default[:nmdvarnish][:vcl_hit] = ''
-default[:nmdvarnish][:vcl_miss] = ''
-default[:nmdvarnish][:vcl_pass] = ''
-default[:nmdvarnish][:vcl_deliver] = ''
-default[:nmdvarnish][:vcl_vcl_error] = ''
+default[:nmdvarnish][:vcl_recv] = nil
+default[:nmdvarnish][:vcl_fetch] = nil
+default[:nmdvarnish][:vcl_hash] = nil
+default[:nmdvarnish][:vcl_hit] = nil
+default[:nmdvarnish][:vcl_miss] = nil
+default[:nmdvarnish][:vcl_pass] = nil
+default[:nmdvarnish][:vcl_deliver] = nil
+default[:nmdvarnish][:vcl_vcl_error] = nil
