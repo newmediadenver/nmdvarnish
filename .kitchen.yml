@@ -15,19 +15,3 @@ suites:
     run_list:
       - recipe[nmdvarnish::default]
     data_bags_path: "<%= ENV['NMDVARNISH_DATA_BAGS_PATH'] %>"
-    attributes: {
-        'nmdvarnish': {
-          'sites': {
-            'default': {
-              'acladdresses': [
-                '"127.0.0.1"/32',
-                '"127.1.1.1"/32'
-              ]
-            },
-            'example2': {
-              'acladdresses':
-                ['"127.0.1.1"/32']
-              }
-          }
-        }
-      }

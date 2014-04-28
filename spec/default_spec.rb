@@ -2,41 +2,7 @@
 require 'spec_helper'
 
 describe 'nmdvarnish::default' do
-  let(:chef_run) do
-   # before do
-    stub_data_bag_item('nmdvarnish', 'configure').and_return(
-    'id' => 'configure',
-    '_default' => {
-      'backend_host' => '127.0.0.1',
-      'sites' => {
-        'default' => {
-          'acladdresses' => [
-            '"127.0.0.1"/32',
-            '"127.0.1.1"/32'
-                ]
-            },
-        'example2' => {
-          'acladdresses' => [
-            '"127.0.1.1"/32'
-                ]
-            }
-        }
-      }
-  )
-    # end
-    ChefSpec::Runner.new do |node|
-      node.set['nmdvarnish'] = {
-        'sites' => {
-          'default' => {
-            'acladdresses' => ['"127.0.0.1"/32', '"127.1.1.1"/32']
-                       },
-          'example2' => {
-            'acladdresses' => ['"127.0.1.1"/32']
-                        }
-     }
-    }
-    end.converge(described_recipe)
-  end
+    let(:chef_run) { ChefSpec::Runner.new.converge(described_recipe) }
 
   it 'Installs the varnish package.' do
     expect(chef_run).to install_package('varnish')
@@ -111,13 +77,24 @@ describe 'nmdvarnish::default' do
       .with_content(/^ +.port = "80";/)
 
     expect(chef_run).to render_file('/etc/varnish/default.vcl')
-      .with_content(/^acl default {/)
+      .with_content(/^director director1 random {/)
+
+    expect(chef_run).to render_file('/etc/varnish/default.vcl')
+      .with_content(/^director director1 random {/)
+
+    expect(chef_run).to render_file('/etc/varnish/default.vcl')
+      .with_content(/^director director2 roundrobin {/)
+
+    expect(chef_run).to render_file('/etc/varnish/default.vcl')
+      .with_content(/^acl acl1 {/)
+
+    expect(chef_run).to render_file('/etc/varnish/default.vcl')
+      .with_content(/^acl acl2 {/)
 
     expect(chef_run).to render_file('/etc/varnish/default.vcl')
       .with_content(/^ +."127.0.0.1"\/32;/)
 
     expect(chef_run).to render_file('/etc/varnish/default.vcl')
       .with_content(/^ +."127.0.1.1"\/32;/)
-
   end
 end

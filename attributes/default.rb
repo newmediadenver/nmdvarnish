@@ -51,6 +51,50 @@ default[:nmdvarnish][:storage_options] = '256m'
 
 # Varnish VCL configuration options.
 
-default[:nmdvarnish][:backend_host] = '127.0.0.1'
-default[:nmdvarnish][:backend_port] = '80'
-default[:nmdvarnish][:enable_esi] = 'no'
+default[:nmdvarnish][:backend] =
+  {
+    'default' => {
+      'host' => '127.0.0.1',
+      'port' => '80'
+    },
+    'default2' => {
+      'host' => '127.0.1.1',
+      'port' => '81'
+    }
+  }
+
+default[:nmdvarnish][:director] =
+  {
+    'director1' => {
+      'random' => [
+        [
+          ' { .backend = default; .weight = 1; }',
+          ' { .backend = default2; .weight = 2; }'
+        ]
+      ]
+    },
+    'director2' => {
+      'roundrobin' => [
+        [
+          '{ .backend = default2; }',
+          '{ .backend = ( .host = "localhost"; .port = "82"; ) }'
+        ]
+      ]
+    }
+  }
+
+default[:nmdvarnish][:acl] = {
+  'acl1' =>
+    ['"127.0.0.1"/32;', '"127.0.1.1"/32;'],
+  'acl2' =>
+    ['"127.0.0.3"/8;', '"127.0.0.4"/32;']
+  }
+
+default[:nmdvarnish][:vcl_recv] = ''
+default[:nmdvarnish][:vcl_fetch] = ''
+default[:nmdvarnish][:vcl_hash] = ''
+default[:nmdvarnish][:vcl_hit] = ''
+default[:nmdvarnish][:vcl_miss] = ''
+default[:nmdvarnish][:vcl_pass] = ''
+default[:nmdvarnish][:vcl_deliver] = ''
+default[:nmdvarnish][:vcl_vcl_error] = ''
