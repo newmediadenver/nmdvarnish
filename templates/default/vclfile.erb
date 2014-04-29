@@ -8,11 +8,13 @@ backend <%= host %> {
 }
 <% end %>
 
+<% unless node[:nmdvarnish][:director].nil?  -%>
 <% node[:nmdvarnish][:director].each do |name, data| %>
   <% data.each do |type, type_data| %>
 director <%= name %> <%= type %> {
   <% type_data.each do |k| %>
 <% k.each do |l| %>  <%= l %>
+<% end %>
 <% end %>
 }
     <% end %>
