@@ -38,7 +38,7 @@ sub vcl_recv {
 <% end %>
 <% unless node[:nmdvarnish][:vcl_fetch].nil?  -%>
 sub vcl_fetch {
-<%= node[:nmdvarnish][:vcl_hash] %>
+<%= node[:nmdvarnish][:vcl_fetch] %>
 }
 
 <% end %>

@@ -24,7 +24,6 @@
 
 # Varnish configuration file path.
 default[:nmdvarnish][:varnishconf][:path] = '/etc/sysconfig/varnish'
-## normal[:nmdvarnish][:version] = "3.0.5"
 
 # Specify the path to the varnish VCL file.
 default[:nmdvarnish][:vclfile] = '/etc/varnish/default.vcl'
