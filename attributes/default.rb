@@ -74,10 +74,10 @@ default[:nmdvarnish][:director] =
       ]
     },
     'director2' => {
-      'roundrobin' => [
+      'round-robin' => [
         [
           '{ .backend = default2; }',
-          '{ .backend = ( .host = "localhost"; .port = "82"; ) }'
+          '{ .backend = { .host = "localhost"; .port = "82"; } }'
         ]
       ]
     }

@@ -9,7 +9,10 @@ platforms:
   - name: centos-5.10
     driver_config:
       box: centos-5.10
-      box_url: https://s3-us-west-2.amazonaws.com/nmd-centos-vmware/opscode_centos-5.10_chef-latest-latest.box
+      box_url: https://s3-us-west-2.amazonaws.com/nmd-centos-virtualbox/opscode_centos-5.10_chef-latest-latest.box
+      driver:
+      network:
+      - ["private_network", {ip: "192.168.33.41"}]
 suites:
   - name: default
     run_list:

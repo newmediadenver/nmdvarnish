@@ -20,8 +20,8 @@
 #
 
 if platform_family?('rhel')
-
-  case node[:platform_version].split('.')
+  major_version = node[:platform_version].split('.')
+  case major_version[0]
   when '5'
     execute 'add-varnish3-centos5-rpm' do
       # rubocop:disable LineLength, StringLiterals
@@ -30,7 +30,7 @@ if platform_family?('rhel')
       not_if { ::File.exist?('/usr/sbin/varnishd') }
     end
   when '6'
-    execute 'add-varnish3-centos5-rpm' do
+    execute 'add-varnish3-centos6-rpm' do
       # rubocop:disable LineLength, StringLiterals
       command '/bin/rpm --nosignature -i http://repo.varnish-cache.org/redhat/varnish-3.0/el5/noarch/varnish-release/varnish-release-3.0-1.el5.centos.noarch.rpm'
       # rubocop:enable LineLength, StringLiterals

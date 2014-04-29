@@ -84,7 +84,7 @@ describe 'nmdvarnish::default' do
       .with_content(/^director director1 random {/)
 
     expect(chef_run).to render_file('/etc/varnish/default.vcl')
-      .with_content(/^director director2 roundrobin {/)
+      .with_content(/^director director2 round-robin {/)
 
     expect(chef_run).to render_file('/etc/varnish/default.vcl')
       .with_content(/^acl acl1 {/)

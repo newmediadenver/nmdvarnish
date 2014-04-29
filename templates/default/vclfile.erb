@@ -27,7 +27,6 @@ acl <%= name %> {
   <% end %>
   }
 <% end %>
-}
 
 <% unless node[:nmdvarnish][:vcl_recv].nil?  -%>
 sub vcl_recv {
