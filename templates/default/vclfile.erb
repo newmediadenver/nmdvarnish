@@ -22,12 +22,14 @@ director <%= name %> <%= type %> {
 
 <% end %>
 
+<% unless node[:nmdvarnish][:acl].nil?  -%>
 <% node[:nmdvarnish][:acl].each do |name, address| %>
 acl <%= name %> {
   <% address.each do |a| %>
     <%= a %>
   <% end %>
   }
+<% end %>
 <% end %>
 
 #<% unless node[:nmdvarnish][:vcl_recv].nil?  -%>

@@ -69,33 +69,9 @@ describe 'nmdvarnish::default' do
       .with_content(/^backend default {/)
 
     expect(chef_run).to render_file('/etc/varnish/default.vcl')
-      .with_content(/^backend default {/)
-
-    expect(chef_run).to render_file('/etc/varnish/default.vcl')
       .with_content(/^ +.host = "127.0.0.1";/)
 
     expect(chef_run).to render_file('/etc/varnish/default.vcl')
       .with_content(/^ +.port = "80";/)
-
-    expect(chef_run).to render_file('/etc/varnish/default.vcl')
-      .with_content(/^director director1 random {/)
-
-    expect(chef_run).to render_file('/etc/varnish/default.vcl')
-      .with_content(/^director director1 random {/)
-
-    expect(chef_run).to render_file('/etc/varnish/default.vcl')
-      .with_content(/^director director2 round-robin {/)
-
-    expect(chef_run).to render_file('/etc/varnish/default.vcl')
-      .with_content(/^acl acl1 {/)
-
-    expect(chef_run).to render_file('/etc/varnish/default.vcl')
-      .with_content(/^acl acl2 {/)
-
-    expect(chef_run).to render_file('/etc/varnish/default.vcl')
-      .with_content(/^ +."127.0.0.1"\/32;/)
-
-    expect(chef_run).to render_file('/etc/varnish/default.vcl')
-      .with_content(/^ +."127.0.1.1"\/32;/)
   end
 end
