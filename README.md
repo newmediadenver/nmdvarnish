@@ -1,8 +1,7 @@
-[![Stories in Ready](https://badge.waffle.io/newmediadenver/nmdvarnish.png?label=ready&title=Ready)](https://waffle.io/newmediadenver/nmdvarnish)
 [![Build Status](https://travis-ci.org/newmediadenver/nmdvarnish.svg?branch=master)](https://travis-ci.org/newmediadenver/nmdvarnish) [![Coverage Status](https://coveralls.io/repos/newmediadenver/nmdvarnish/badge.png?branch=master)](https://coveralls.io/r/newmediadenver/nmdvarnish?branch=master) [![Dependency Status](https://gemnasium.com/newmediadenver/nmdvarnish.svg)](https://gemnasium.com/newmediadenver/nmdvarnish)
 
 NewMedia! Denver's nmdvarnish cookbook
-======================================
+=============================
 
 nmdvarnish (1.0.0) Manages varnish.
 
@@ -23,11 +22,11 @@ Attributes
 
 ### nmdvarnish::default
 
-### nmdvarnish::varnish_install installs version 3.0.5
+### nmdvarnish::varnish_install
+###  installs version 3.0.5
 
     # Varnish configuration file path.
     default[:nmdvarnish][:varnishconf][:path] = '/etc/sysconfig/varnish'
-
 
     # Specify the path to the varnish VCL file.
     default[:nmdvarnish][:vclfile] = '/etc/varnish/default.vcl'
@@ -59,50 +58,51 @@ Attributes
         'default' => {
           'host' => '127.0.0.1',
           'port' => '80'
-        },
-        'default2' => {
-          'host' => '127.0.1.1',
-          'port' => '81'
         }
       }
 
-    default[:nmdvarnish][:director] =
-      {
-        'director1' => {
-          'random' => [
-            [
-              ' { .backend = default; .weight = 1; }',
-              ' { .backend = default2; .weight = 2; }'
-            ]
-          ]
-        },
-        'director2' => {
-          'roundrobin' => [
-            [
-              '{ .backend = default2; }',
-              '{ .backend = ( .host = "localhost"; .port = "82"; ) }'
-            ]
-          ]
-        }
-      }
+    default[:nmdvarnish][:director] = nil
 
-    default[:nmdvarnish][:acl] = {
-      'acl1' =>
-        ['"127.0.0.1"/32;', '"127.0.1.1"/32;'],
-      'acl2' =>
-        ['"127.0.0.3"/8;', '"127.0.0.4"/32;']
-      }
+      EXAMPLE[:nmdvarnish][:director] =
+          {
+            'director1' => {
+              'random' => [
+                [
+                  ' { .backend = default; .weight = 1; }',
+                  ' { .backend = default2; .weight = 2; }'
+                ]
+              ]
+            },
+            'director2' => {
+              'roundrobin' => [
+                [
+                  '{ .backend = default2; }',
+                  '{ .backend = ( .host = "localhost"; .port = "82"; ) }'
+                ]
+              ]
+            }
+          }
+    default[:nmdvarnish][:acl] = nil
 
-    # Varnish VCL subroutines defined as an attribute.
+          EXAMPLE[:nmdvarnish][:acl] = {
+            'acl1' =>
+              ['"127.0.0.1"/32;', '"127.0.1.1"/32;'],
+            'acl2' =>
+              ['"127.0.0.3"/8;', '"127.0.0.4"/32;']
+            }
 
-    default[:nmdvarnish][:vcl_recv] = ''
-    default[:nmdvarnish][:vcl_fetch] = ''
-    default[:nmdvarnish][:vcl_hash] = ''
-    default[:nmdvarnish][:vcl_hit] = ''
-    default[:nmdvarnish][:vcl_miss] = ''
-    default[:nmdvarnish][:vcl_pass] = ''
-    default[:nmdvarnish][:vcl_deliver] = ''
-    default[:nmdvarnish][:vcl_vcl_error] = ''
+
+
+    # Varnish VCL subroutines. Define as an array. One line per element.
+
+    default[:nmdvarnish][:vcl_recv] = nil
+    default[:nmdvarnish][:vcl_fetch] = nil
+    default[:nmdvarnish][:vcl_hash] = nil
+    default[:nmdvarnish][:vcl_hit] = nil
+    default[:nmdvarnish][:vcl_miss] = nil
+    default[:nmdvarnish][:vcl_pass] = nil
+    default[:nmdvarnish][:vcl_deliver] = nil
+    default[:nmdvarnish][:vcl_vcl_error] = nil
 
 Recipes
 -------
@@ -122,6 +122,7 @@ Testing and Utility
     rake kitchen:default-centos-510  # Run default-centos-510 test instance
     rake readme                      # Generate the Readme.md file
     rake rubocop                     # Run RuboCop style and lint checks
+    rake rubocop:auto_correct        # Auto-correct RuboCop offenses
     rake spec                        # Run ChefSpec examples
     rake test                        # Run all tests
 
