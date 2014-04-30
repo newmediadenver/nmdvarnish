@@ -93,6 +93,8 @@ Attributes
         ['"127.0.0.3"/8;', '"127.0.0.4"/32;']
       }
 
+    # Varnish VCL subroutines defined as an attribute.
+
     default[:nmdvarnish][:vcl_recv] = ''
     default[:nmdvarnish][:vcl_fetch] = ''
     default[:nmdvarnish][:vcl_hash] = ''
