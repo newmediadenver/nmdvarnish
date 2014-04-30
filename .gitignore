@@ -20,4 +20,8 @@
 # Macs
 .DS_Store
 
-/coverage
+#coveralls
+/coverage/
+
+#travis
+/.travis.yml

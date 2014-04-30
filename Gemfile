@@ -15,4 +15,5 @@ gem 'coveralls', require: false
 group :integration do
   gem 'test-kitchen', '~> 1.0'
   gem 'kitchen-vagrant'
+  gem 'vagrant-wrapper'
 end

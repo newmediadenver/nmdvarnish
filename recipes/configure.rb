@@ -18,5 +18,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-include_recipe 'nmdvarnish::install'
-include_recipe 'nmdvarnish::configure'
+
+Chef::Log.debug(node[:nmdvarnish][:backend].inspect)
+template node[:nmdvarnish][:varnishconf][:path] do
+  source 'varnish.erb'
+  mode 0644
+  owner 'root'
+  group 'root'
+end
+
+template node[:nmdvarnish][:vclfile] do
+  source 'vclfile.erb'
+  mode 0644
+  owner 'root'
+  group 'root'
+
+end

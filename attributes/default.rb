@@ -20,11 +20,80 @@
 
 ### nmdvarnish::default
 
+### nmdvarnish::varnish_install
+
 # Varnish configuration file path.
-default['nmdvarnish']['varnishconf']['path'] = '/etc/default/varnish'
+default[:nmdvarnish][:varnishconf][:path] = '/etc/sysconfig/varnish'
+
+# Specify the path to the varnish VCL file.
+default[:nmdvarnish][:vclfile] = '/etc/varnish/default.vcl'
 
 # Set varnish configuration options to enable a default install.
-default['nmdvarnish']['start'] = 'yes'
-default['nmdvarnish']['nfiles'] = '131072'
-default['nmdvarnish']['memlock'] = '82000'
-default['nmdvarnish']['instance'] = '$(uname -n)'
+default[:nmdvarnish][:start] = 'yes'
+default[:nmdvarnish][:nfiles] = '131072'
+default[:nmdvarnish][:memlock] = '82000'
+default[:nmdvarnish][:instance] = '$(uname -n)'
+default[:nmdvarnish][:listen_address] = ''
+default[:nmdvarnish][:listen_port] = '6081'
+default[:nmdvarnish][:management_hostname] = 'localhost'
+default[:nmdvarnish][:management_port] = '6082'
+default[:nmdvarnish][:vcl_file] = '/etc/varnish/default.vcl'
+default[:nmdvarnish][:default_ttl] =  '120'
+default[:nmdvarnish][:threads_min] =  '50'
+default[:nmdvarnish][:threads_max] =  '1000'
+default[:nmdvarnish][:threads_timeout] =  '120'
+default[:nmdvarnish][:secretfile] = '/etc/varnish/secret'
+default[:nmdvarnish][:storage_type] = 'malloc'
+default[:nmdvarnish][:storage_options] = '256m'
+
+### nmdvarnish::varnish_configure
+
+# Varnish VCL configuration options.
+
+default[:nmdvarnish][:backend] =
+  {
+    'default' => {
+      'host' => '127.0.0.1',
+      'port' => '80'
+    },
+    'default2' => {
+      'host' => '127.0.1.1',
+      'port' => '81'
+    }
+  }
+
+default[:nmdvarnish][:director] =
+  {
+    'director1' => {
+      'random' => [
+        [
+          ' { .backend = default; .weight = 1; }',
+          ' { .backend = default2; .weight = 2; }'
+        ]
+      ]
+    },
+    'director2' => {
+      'round-robin' => [
+        [
+          '{ .backend = default2; }',
+          '{ .backend = ( .host = "localhost"; .port = "82"; ) }'
+        ]
+      ]
+    }
+  }
+
+default[:nmdvarnish][:acl] = {
+  'acl1' =>
+    ['"127.0.0.1"/32;', '"127.0.1.1"/32;'],
+  'acl2' =>
+    ['"127.0.0.3"/8;', '"127.0.0.4"/32;']
+  }
+
+default[:nmdvarnish][:vcl_recv] = nil
+default[:nmdvarnish][:vcl_fetch] = nil
+default[:nmdvarnish][:vcl_hash] = nil
+default[:nmdvarnish][:vcl_hit] = nil
+default[:nmdvarnish][:vcl_miss] = nil
+default[:nmdvarnish][:vcl_pass] = nil
+default[:nmdvarnish][:vcl_deliver] = nil
+default[:nmdvarnish][:vcl_vcl_error] = nil

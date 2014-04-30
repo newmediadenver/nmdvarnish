@@ -15,4 +15,4 @@ notifications:
 install: script/cached-bundle install --without integration --deployment
 env:
   global:
-    secure: lcPcE+0cmTYjfI+Z/SYm3cfXsN2CsbWGPfrYYYy02FXcOCGaLyscWXf10GCN3iBUzfDreVP6fl77k0S0Rw7055gLrIE12sIywoIsJHkxi/LQEmepXVZz0dipHZyM1Zbv3XimWUNZ1qTc8JVg48iyyR3TqTgQY64Uqz0rW/Kj1F0=
+    secure: RqNL6aTD75yqHdoFAj8j4ZTZsynA6hpFDCZkqiUmeZULZ6ZbdtEUPsw9LYGsfQDrIGOJeiBiIvzhQXcwonh62eyfMwksVruIVFAVULxwM+hahpJtdqTNCeHmTMNK+h/D7DtwR5kwDDUml3hlnTJ4mMFfAat6j6bwoOPpD4LJ8wc=
