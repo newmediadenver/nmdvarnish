@@ -1,5 +1,5 @@
 # Bundler
-/Gemfile.lock
+Gemfile.lock
 /bin/
 /.bundle/
 /bundle/
@@ -24,4 +24,4 @@
 /coverage/
 
 #travis
-/.travis.yml
+.travis.yml
