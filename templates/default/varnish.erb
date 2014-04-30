@@ -25,5 +25,6 @@ DAEMON_OPTS="-a <%= node[:nmdvarnish][:listen_address] %>:<%= node[:nmdvarnish][
              -f <%= node[:nmdvarnish][:vcl_file] %> \
              -t <%= node[:nmdvarnish][:default_ttl] %> \
              -w <%= node[:nmdvarnish][:threads_min] %>,<%= node[:nmdvarnish][:threads_max] %>,<%= node[:nmdvarnish][:threads_timeout] %> \
+             -u varnish -g varnish \
              -S <%= node[:nmdvarnish][:secretfile] %> \
              -s <%= node[:nmdvarnish][:storage_type] %>,<%= node[:nmdvarnish][:storage_options] %>"

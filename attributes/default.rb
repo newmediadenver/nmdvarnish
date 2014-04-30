@@ -55,40 +55,11 @@ default[:nmdvarnish][:backend] =
     'default' => {
       'host' => '127.0.0.1',
       'port' => '80'
-    },
-    'default2' => {
-      'host' => '127.0.1.1',
-      'port' => '81'
     }
   }
 
-default[:nmdvarnish][:director] =
-  {
-    'director1' => {
-      'random' => [
-        [
-          ' { .backend = default; .weight = 1; }',
-          ' { .backend = default2; .weight = 2; }'
-        ]
-      ]
-    },
-    'director2' => {
-      'round-robin' => [
-        [
-          '{ .backend = default2; }',
-          '{ .backend = ( .host = "localhost"; .port = "82"; ) }'
-        ]
-      ]
-    }
-  }
-
-default[:nmdvarnish][:acl] = {
-  'acl1' =>
-    ['"127.0.0.1"/32;', '"127.0.1.1"/32;'],
-  'acl2' =>
-    ['"127.0.0.3"/8;', '"127.0.0.4"/32;']
-  }
-
+default[:nmdvarnish][:director] = nil
+default[:nmdvarnish][:acl] = nil
 default[:nmdvarnish][:vcl_recv] = nil
 default[:nmdvarnish][:vcl_fetch] = nil
 default[:nmdvarnish][:vcl_hash] = nil
