@@ -65,15 +65,21 @@ RSpec::Core::RakeTask.new(:spec)
 
 desc 'Generate the Readme.md file.'
 task :readme do
+  authors = `git shortlog -sn`.b.scan(/[^\d\s].*/).map do |a|
+    a == 'Making GitHub Delicious.' ? nil : a
+  end
+
   metadata = Chef::Cookbook::Metadata.new
   metadata.from_file('metadata.rb')
   markdown = Readme.new(
                         metadata: metadata,
                         attributes: attributes,
                         recipes: recipes,
-                        rake_tasks: rake_tasks)
+                        rake_tasks: rake_tasks,
+                        authors: authors)
   new_readme = markdown.render(File.read('templates/default/readme.md.erb'))
   File.open('README.md', 'w') { |file| file.write(new_readme) }
+  puts new_readme
 end
 
 desc 'Run all tests'

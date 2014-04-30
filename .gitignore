@@ -3,12 +3,11 @@ Gemfile.lock
 /bin/
 /.bundle/
 /bundle/
-/vendor/gems/
 
 # Berkshelf
 /Berksfile.lock
 /cookbooks/
-/vendor/cookbooks/
+vendor/*
 
 # Vagrant
 /.vagrant/
@@ -25,3 +24,4 @@ Gemfile.lock
 
 #travis
 .travis.yml
+
