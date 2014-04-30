@@ -33,10 +33,11 @@ Testing and Utility
 
 <%= rake_tasks %>
 
-License and Author
+License and Authors
 ------------------
 
-Author:: Kevin Bridges
+Authors:: <% authors.each do |author| %><% unless author.nil? %><%= "\n  #{author}" %><% end %><% end %>
+
 
 Copyright:: 2014, NewMedia Denver
 

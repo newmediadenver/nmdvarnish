@@ -12,7 +12,7 @@ Requirements
 
 ### Platforms
 
-`centos = 5`
+`centos >= 5.0`
 
 ### Dependencies
 
@@ -21,6 +21,7 @@ Attributes
 ----------
 
 ### nmdvarnish::default
+<<<<<<< HEAD
 
 ### nmdvarnish::varnish_install
 ###  installs version 3.0.5
@@ -28,9 +29,17 @@ Attributes
     # Varnish configuration file path.
     default[:nmdvarnish][:varnishconf][:path] = '/etc/sysconfig/varnish'
 
+=======
+    
+### nmdvarnish::varnish_install
+    
+    # Varnish configuration file path.
+    default[:nmdvarnish][:varnishconf][:path] = '/etc/sysconfig/varnish'
+    
+>>>>>>> upstream/master
     # Specify the path to the varnish VCL file.
     default[:nmdvarnish][:vclfile] = '/etc/varnish/default.vcl'
-
+    
     # Set varnish configuration options to enable a default install.
     default[:nmdvarnish][:start] = 'yes'
     default[:nmdvarnish][:nfiles] = '131072'
@@ -48,11 +57,11 @@ Attributes
     default[:nmdvarnish][:secretfile] = '/etc/varnish/secret'
     default[:nmdvarnish][:storage_type] = 'malloc'
     default[:nmdvarnish][:storage_options] = '256m'
-
+    
 ### nmdvarnish::varnish_configure
-
+    
     # Varnish VCL configuration options.
-
+    
     default[:nmdvarnish][:backend] =
       {
         'default' => {
@@ -60,6 +69,7 @@ Attributes
           'port' => '80'
         }
       }
+<<<<<<< HEAD
 
     default[:nmdvarnish][:director] = nil
 
@@ -95,6 +105,11 @@ Attributes
 
     # Varnish VCL subroutines. Define as an array. One line per element.
 
+=======
+    
+    default[:nmdvarnish][:director] = nil
+    default[:nmdvarnish][:acl] = nil
+>>>>>>> upstream/master
     default[:nmdvarnish][:vcl_recv] = nil
     default[:nmdvarnish][:vcl_fetch] = nil
     default[:nmdvarnish][:vcl_hash] = nil
@@ -127,10 +142,13 @@ Testing and Utility
     rake test                        # Run all tests
 
 
-License and Author
+License and Authors
 ------------------
 
-Author:: David Arnold
+Authors:: 
+  David Arnold
+  Kevin Bridges
+
 
 Copyright:: 2014, NewMedia Denver
 
