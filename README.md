@@ -21,22 +21,12 @@ Attributes
 ----------
 
 ### nmdvarnish::default
-<<<<<<< HEAD
-
-### nmdvarnish::varnish_install
-###  installs version 3.0.5
-
-    # Varnish configuration file path.
-    default[:nmdvarnish][:varnishconf][:path] = '/etc/sysconfig/varnish'
-
-=======
     
 ### nmdvarnish::varnish_install
     
     # Varnish configuration file path.
     default[:nmdvarnish][:varnishconf][:path] = '/etc/sysconfig/varnish'
     
->>>>>>> upstream/master
     # Specify the path to the varnish VCL file.
     default[:nmdvarnish][:vclfile] = '/etc/varnish/default.vcl'
     
@@ -69,7 +59,6 @@ Attributes
           'port' => '80'
         }
       }
-<<<<<<< HEAD
 
     default[:nmdvarnish][:director] = nil
 
@@ -109,7 +98,6 @@ Attributes
     
     default[:nmdvarnish][:director] = nil
     default[:nmdvarnish][:acl] = nil
->>>>>>> upstream/master
     default[:nmdvarnish][:vcl_recv] = nil
     default[:nmdvarnish][:vcl_fetch] = nil
     default[:nmdvarnish][:vcl_hash] = nil
