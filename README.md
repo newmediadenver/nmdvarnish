@@ -59,6 +59,42 @@ Attributes
           'port' => '80'
         }
       }
+
+    default[:nmdvarnish][:director] = nil
+
+      EXAMPLE[:nmdvarnish][:director] =
+          {
+            'director1' => {
+              'random' => [
+                [
+                  ' { .backend = default; .weight = 1; }',
+                  ' { .backend = default2; .weight = 2; }'
+                ]
+              ]
+            },
+            'director2' => {
+              'roundrobin' => [
+                [
+                  '{ .backend = default2; }',
+                  '{ .backend = ( .host = "localhost"; .port = "82"; ) }'
+                ]
+              ]
+            }
+          }
+    default[:nmdvarnish][:acl] = nil
+
+          EXAMPLE[:nmdvarnish][:acl] = {
+            'acl1' =>
+              ['"127.0.0.1"/32;', '"127.0.1.1"/32;'],
+            'acl2' =>
+              ['"127.0.0.3"/8;', '"127.0.0.4"/32;']
+            }
+
+
+
+    # Varnish VCL subroutines. Define as an array. One line per element.
+
+=======
     
     default[:nmdvarnish][:director] = nil
     default[:nmdvarnish][:acl] = nil
